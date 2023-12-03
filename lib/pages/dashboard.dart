@@ -54,8 +54,8 @@ class _DashBoardState extends State<DashBoard> {
                       ],
                     ),
                   ),
-                  SizedBox(
-                    height: 40,
+                  const SizedBox(
+                    height: 20,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -77,17 +77,110 @@ class _DashBoardState extends State<DashBoard> {
                       topRight: Radius.circular(20),
                       topLeft: Radius.circular(20)),
                   color: Colors.white),
-              child: Column(
-                children: [
-                  Text(
-                    'Accounts',
-                    textAlign: TextAlign.left,
-                    style: Theme.of(context)
-                        .textTheme
-                        .headline5
-                        ?.copyWith(color: Colors.black),
-                  )
-                ],
+              child: Padding(
+                padding: const EdgeInsets.only(top: 18.0),
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.vertical,
+                  child: Column(
+                    children: [
+                      const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: Text(
+                            'Accounts',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 19,
+                                fontWeight: FontWeight.w700),
+                          ),
+                        ),
+                      ),
+                      accountsContainer(),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Padding(
+                            padding: EdgeInsets.symmetric(
+                                vertical: 10, horizontal: 10),
+                            child: Align(
+                              alignment: Alignment.bottomLeft,
+                              child: Text(
+                                'Cards',
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            margin: const EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 10),
+                            height: 24,
+                            width: 90,
+                            decoration: BoxDecoration(
+                                color: Colors.blue.shade200,
+                                borderRadius: BorderRadius.circular(10)),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Icon(
+                                  FontAwesomeIcons.plus,
+                                  size: 13,
+                                  color: Colors.blue.shade700,
+                                ),
+                                Text(
+                                  'ADD CARDS',
+                                  style: TextStyle(
+                                      fontSize: 10,
+                                      color: Colors.blue.shade700),
+                                )
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                      Container(
+                        margin: const EdgeInsets.symmetric(
+                            horizontal: 20, vertical: 10),
+                        height: 75,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                            color: Colors.blue.shade50,
+                            borderRadius: BorderRadius.circular(20)),
+                        child: Row(
+                          children: [
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            Icon(
+                              FontAwesomeIcons.creditCard,
+                              color: Colors.blue.shade300,
+                            ),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            const Text(
+                              'EUR *2334',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w400, fontSize: 15),
+                            ),
+                            const SizedBox(
+                              width: 80,
+                            ),
+                            const Text(
+                              '8199.33 EUR',
+                              style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                              ),
+                            )
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                ),
               ),
             )
           ])
@@ -96,6 +189,56 @@ class _DashBoardState extends State<DashBoard> {
     );
   }
 
+  Container accountsContainer() {
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+      width: double.infinity,
+      height: 180,
+      decoration: BoxDecoration(
+          color: Colors.blue.shade50, borderRadius: BorderRadius.circular(30)),
+      child: Column(children: [
+        const SizedBox(
+          height: 10,
+        ),
+        theRow(FontAwesomeIcons.wallet, '80993-241-3-5000-432453'),
+        const SizedBox(
+          height: 5,
+        ),
+        const Divider(),
+        const SizedBox(
+          height: 10,
+        ),
+        theRow(FontAwesomeIcons.euroSign, '34999.62'),
+        const SizedBox(
+          height: 10,
+        ),
+        const Divider(),
+        const SizedBox(
+          height: 10,
+        ),
+        theRow(FontAwesomeIcons.dollarSign, '12442.34')
+      ]),
+    );
+  }
+
+  Row theRow(IconData icon, String thestring) {
+    return Row(
+      children: [
+        Icon(
+          icon,
+          color: Colors.blue.shade300,
+        ),
+        const SizedBox(width: 16),
+        Text(
+          thestring,
+          style: const TextStyle(color: Colors.black, fontSize: 16),
+        )
+      ],
+    );
+  }
+
+  // ignore: non_constant_identifier_names
   Container TransactionActionBtn(String data) {
     return Container(
       width: 140,
@@ -104,8 +247,8 @@ class _DashBoardState extends State<DashBoard> {
           color: Colors.blue.shade500, borderRadius: BorderRadius.circular(13)),
       child: Center(
           child: Text(
-        '$data',
-        style: TextStyle(
+        ' $data',
+        style: const TextStyle(
           color: Colors.white,
         ),
       )),

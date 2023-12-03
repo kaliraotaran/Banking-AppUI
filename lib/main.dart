@@ -3,10 +3,12 @@
 import 'package:flutter/material.dart';
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:tester/pages/creditcard.dart';
 import 'package:tester/pages/dashboard.dart';
 
 void main() {
   runApp(const MaterialApp(
+    debugShowCheckedModeBanner: false,
     home: RootPage(),
   ));
 }
@@ -95,13 +97,7 @@ class _RootPageState extends State<RootPage> {
                 fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
           ),
         ),
-        Center(
-          child: Text(
-            "Creditcard Page",
-            style: TextStyle(
-                fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
-          ),
-        )
+        Creditcard()
       ],
     );
   }
